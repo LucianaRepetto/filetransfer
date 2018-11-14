@@ -3,13 +3,16 @@
 //Guardar un archivo en mi root folder
 
 if(isset($_POST['submit'])){
-    var_dump($_FILES);
-    $file = $_FILES['file']; //_FILES es una supervariable global q me trae los datos del archivo
-    $fileName = $_FILES['file']['name'];
-    $fileTmpName = $_FILES['file']['tmp_name'];
-    $fileSize = $_FILES['file']['size'];
-    $fileError = $_FILES['file']['error'];
-    $fileTyle = $_FILES['file']['type'];
+    $file = $_FILES['file'];
+    $fileCount = count($file['name']);
+
+    for ($i=0; $i<$fileCount; $i++){
+    $file = $_FILES['file'];[$i]; //_FILES es una supervariable global q me trae los datos del archivo
+    $fileName = $_FILES['file']['name'][$i];
+    $fileTmpName = $_FILES['file']['tmp_name'][$i];
+    $fileSize = $_FILES['file']['size'][$i];
+    $fileError = $_FILES['file']['error'][$i];
+    $fileTyle = $_FILES['file']['type'][$i];
     
     $fileExt = explode('.', $fileName );
     $fileActualExt = strtolower(end($fileExt)); //para chequear la q la extension sea lo que yo quiero
@@ -17,10 +20,6 @@ if(isset($_POST['submit'])){
 
     $allowed = array('xls', 'xlsx');//solo permite excels
 
-//TODO: for loop para que me haga esto por cada file subido la variable _FILES me toma todos los archivos subidos?
-    $fileCount = count($file);
-    echo ("<script>console.log( 'Debug Objects: " . $fileCount . "' );</script>");
-    for ($i=0; $i<$fileCount; $i++){
         if (in_array($fileActualExt, $allowed )){               //si la extension es lo que yo quiero
             if($fileError === 0){               //si no tenemos errores al subir el archivo
                 if($fileSize < 10000000){         //si es menor a ese tamaño

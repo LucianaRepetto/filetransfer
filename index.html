@@ -14,11 +14,11 @@
     
 
     <form action="upload.php"  method="POST" enctype="multipart/form-data" class="p-5">  <!--enctype nos va a permitir subir cualquier tipo de archivo al php-->
-        <input class="pb-3" type="file" name="file" id="myFile" multiple="multiple" size="50" onchange="myFunction()"> <br>
+        <input class="pb-3" type="file" name="file[]" id="myFile" multiple="multiple" size="50" onchange="myFunction()"> <br>
         <p id="demo"></p>
         <br>
         <input type="submit" name="submit" value="Subir">
-        
+
         
     </form>
 
