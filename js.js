@@ -3,7 +3,7 @@ function myFunction(){
     var txt = ""; //va a mostrar que hemos elegido
 
 
-    //cada archivo tiene keys files, name, size
+    //los files devuelven un ARRAY con keys como name type size
 
     if ('files' in x) {                         //si hay un archivo en la variable x
         if (x.files.length == 0) {
