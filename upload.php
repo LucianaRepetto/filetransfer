@@ -30,15 +30,22 @@ if(isset($_POST['submit'])){
                     move_uploaded_file($fileTmpName, $fileDestination );
                     header("Location: index.html?uploadsuccess");
                 } else{
-                    echo "Tu archivo es muy grande.";
+                    echo '<p style="text-align: center; margin-top:100px;"><span style="font-size: 40px; font-family: verdana,palatino; color: #003366;" >Tu archivo es muy grande</span></p> </br>;';
+                    
+                    header("refresh:1.5;index.html?muygrande");
                 }
             }else {
-                echo "Hay un error al subir el archivo.";
+                echo '<p style="text-align: center; margin-top:100px;"><span style="font-size: 40px; font-family: verdana,palatino; color: #003366;" >Hay un error al subir el archivo.</span></p> </br>;';
+                
+                header("refresh:1.5;index.html?error");
 
             }
 
         } else{
-            echo "No se pueden subir archivos de este tipo.";
+            echo '<p  style="text-align: center; margin-top:100px;"><span style="font-size: 40px; font-family: verdana,palatino; color: #003366;" >No se pueden subir archivos de este tipo</span></p> </br>;';
+            
+            header("refresh:1.5;index.html?noesearchivo");
+            
         }
     }
 }
